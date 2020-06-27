@@ -1,9 +1,10 @@
-//Immediate smaller than 
+//Immediate greater than X
 
 
 import java.util.*;
 import java.io.*;
 import java.lang.*;
+
 
 class Driver
 {
@@ -15,34 +16,32 @@ class Driver
         while(t-- > 0)
         {
             int n = Integer.parseInt(read.readLine());
-            
             String str[] = read.readLine().trim().split(" ");
+            
             int arr[] = new int[n];
-            
-            for(int i =0; i < n; i++)
+            for(int i = 0; i < n; i++)
                 arr[i] = Integer.parseInt(str[i]);
-            
-            int x = Integer.parseInt(read.readLine());
-            System.out.println(new Solution().immediateSmaller(arr, n, x));
+                
+            int x = Integer.parseInt(read.readLine());    
+            System.out.println(new Greater().immediateGreater(arr, n, x));
         }
     }
 }
 
-
-class Solution
+class Greater
 {
-    
-    public static int immediateSmaller(int arr[], int n, int x)
+    public static int immediateGreater(int arr[], int n, int x)
     {
-        int small=-1,ans=-1;
+        
+        Arrays.sort(arr);
+        int ans=-1;
         for(int i=0;i<n;i++)
         {
-            if(arr[i]<x)
-           { 
-              small=arr[i];
-           }
-            if(small>ans)
-            ans=small;
+            if(arr[i]>x)
+            {
+                ans=arr[i];
+                break;
+            }
         }
         return ans;
     }
